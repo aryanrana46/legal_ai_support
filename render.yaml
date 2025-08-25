@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: legal-ai-support
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "streamlit run app.py --server.port $PORT --server.address 0.0.0.0"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.6
+      - key: IPC_JSON_PATH
+        value: ./ipc.json
+      - key: PERSIST_DIRECTORY_PATH
+        value: /app/chroma_db
+      - key: IPC_COLLECTION_NAME
+        value: ipc_collection
+    disk:
+      name: chroma-db
+      mountPath: /app/chroma_db
+      sizeGB: 1
