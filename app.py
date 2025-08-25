@@ -1,12 +1,6 @@
-# app.py
-
 import streamlit as st
-from dotenv import load_dotenv
-from crew import legal_assistant_crew
-
 
 st.set_page_config(page_title="AI Legal Assistant", page_icon="🧠", layout="wide")
-
 st.title("⚖ Personal AI Legal Assistant")
 st.markdown(
     "Enter a legal problem in plain English. This assistant will help you:\n"
@@ -24,13 +18,6 @@ if submitted:
     if not user_input.strip():
         st.warning("Please enter a legal issue to analyze.")
     else:
-        with st.spinner("🔎 Analyzing your case and preparing legal output..."):
-            result = legal_assistant_crew.kickoff(inputs={"user_input": user_input})
-
         st.success("✅ Legal Assistant completed the workflow!")
-
-        # Display final result
         st.subheader("📄 Final Output")
-        st.markdown(result if isinstance(result, str) else str(result))
-
-        # Optional: Expand sections if intermediate steps are structured (later enhancement)
+        st.markdown("This is a placeholder response. The actual processing will be added later.")
